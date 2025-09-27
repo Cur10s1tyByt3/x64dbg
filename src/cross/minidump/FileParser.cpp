@@ -21,17 +21,14 @@ struct DumpMemoryProvider : MemoryProvider
         if(mParser == nullptr)
             return false;
 
-        auto block = mParser->GetMemBlock(addr);
-        if(block == nullptr || block->State == MEM_FREE)
+        // TODO: support page alignment zeroes (might not be relevant anymore)
+        auto data = mParser->ReadMemory(addr, size);
+        if(!data)
+        {
             return false;
+        }
 
-        auto rva = addr - block->BaseAddress;
-
-        // TODO: support page alignment zeroes
-        if(rva + size >= block->DataSize)
-            return false;
-
-        memcpy(dest, block->Data + rva, size);
+        memcpy(dest, data->data(), data->size());
         return true;
     }
 
@@ -439,8 +436,8 @@ std::unique_ptr<FileParser> FileParser::Create(const uint8_t* begin, const uint8
     if(memcmp(magic, mdmpMagic, sizeof(mdmpMagic)) == 0)
     {
         auto parser = std::make_unique<DmpFileParser>();
-        udmpparser::MemoryView_t memoryView(begin, end);
-        if(!parser->mDmp.Parse(memoryView))
+        auto memoryReader = std::make_shared<udmpparser::MemoryReader_t>(std::span<uint8_t>((uint8_t*)begin, (uint8_t*)end));
+        if(!parser->mDmp.Parse(memoryReader))
         {
             error = "Minidump parsing failed!";
             return nullptr;

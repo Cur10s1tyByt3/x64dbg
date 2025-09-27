@@ -23,6 +23,6 @@ git = "https://github.com/WerWolv/PatternLanguage"
 tag = "3e98b047c52c07bb1816bd0936f561ce7797469d"
 
 [fetch-content.udmp-parser]
-git = "https://github.com/mrexodia/udmp-parser"
-tag = "bc5952eda39ba0b1a07fc57f57d166292f1e9563"
+git = "https://github.com/0vercl0k/udmp-parser"
+tag = "fbl_fixup_memview"
 subdir = "src"

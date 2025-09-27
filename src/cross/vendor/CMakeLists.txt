@@ -56,12 +56,12 @@ FetchContent_Declare(PatternLanguage
 )
 FetchContent_MakeAvailable(PatternLanguage)
 
-message(STATUS "Fetching udmp-parser (bc5952eda39ba0b1a07fc57f57d166292f1e9563)...")
+message(STATUS "Fetching udmp-parser (fbl_fixup_memview)...")
 FetchContent_Declare(udmp-parser
 	GIT_REPOSITORY
-		"https://github.com/mrexodia/udmp-parser"
+		"https://github.com/0vercl0k/udmp-parser"
 	GIT_TAG
-		bc5952eda39ba0b1a07fc57f57d166292f1e9563
+		fbl_fixup_memview
 	SOURCE_SUBDIR
 		src
 )

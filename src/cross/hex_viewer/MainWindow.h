@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
+    void loadFile(const QString & path);
 
 private slots:
     void onButtonRunPressed();
@@ -35,7 +36,6 @@ private slots:
     void on_action_Load_file_triggered();
 
 private:
-    void loadFile(const QString & path);
     void setupNavigation();
     void setupWidgets();
     void logHandler(LogLevel level, const char* message);
