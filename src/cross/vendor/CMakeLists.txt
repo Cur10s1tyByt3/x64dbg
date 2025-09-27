@@ -66,3 +66,18 @@ FetchContent_Declare(udmp-parser
 		src
 )
 FetchContent_MakeAvailable(udmp-parser)
+
+message(STATUS "Fetching ida-sdk (a310de633b6ec16f9a43fd40f9c370b4caa89d1a)...")
+FetchContent_Declare(ida-sdk
+	GIT_REPOSITORY
+		"https://github.com/HexRaysSA/ida-sdk"
+	GIT_TAG
+		a310de633b6ec16f9a43fd40f9c370b4caa89d1a
+)
+FetchContent_MakeAvailable(ida-sdk)
+
+# Target: idalib
+add_library(idalib INTERFACE)
+
+set(CMKR_TARGET idalib)
+include(idalib.cmake)

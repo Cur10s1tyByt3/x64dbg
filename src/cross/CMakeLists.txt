@@ -222,3 +222,37 @@ get_directory_property(CMKR_VS_STARTUP_PROJECT DIRECTORY ${PROJECT_SOURCE_DIR} D
 if(NOT CMKR_VS_STARTUP_PROJECT)
 	set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT hex_viewer)
 endif()
+
+# Target: ida_playground
+set(ida_playground_SOURCES
+	cmake.toml
+	"ida_playground/MainWindow.cpp"
+	"ida_playground/MainWindow.h"
+	"ida_playground/MainWindow.ui"
+	"ida_playground/main.cpp"
+)
+
+qt_executable(ida_playground ${ida_playground_SOURCES})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${ida_playground_SOURCES})
+
+target_compile_features(ida_playground PRIVATE
+	cxx_std_20
+)
+
+target_include_directories(ida_playground PRIVATE
+	ida_playground
+)
+
+if(NOT TARGET idalib)
+	message(FATAL_ERROR "Target \"idalib\" referenced by \"ida_playground\" does not exist!")
+endif()
+
+target_link_libraries(ida_playground PRIVATE
+	x64dbg::widgets
+	idalib
+)
+
+get_directory_property(CMKR_VS_STARTUP_PROJECT DIRECTORY ${PROJECT_SOURCE_DIR} DEFINITION VS_STARTUP_PROJECT)
+if(NOT CMKR_VS_STARTUP_PROJECT)
+	set_property(DIRECTORY ${PROJECT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ida_playground)
+endif()

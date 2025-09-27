@@ -26,3 +26,11 @@ tag = "3e98b047c52c07bb1816bd0936f561ce7797469d"
 git = "https://github.com/0vercl0k/udmp-parser"
 tag = "fbl_fixup_memview"
 subdir = "src"
+
+[fetch-content.ida-sdk]
+git = "https://github.com/HexRaysSA/ida-sdk"
+tag = "a310de633b6ec16f9a43fd40f9c370b4caa89d1a"
+
+[target.idalib]
+type = "interface"
+include-after = ["idalib.cmake"]
