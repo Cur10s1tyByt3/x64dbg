@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
+    void loadFile(const QString & path);
 
 protected:
     void closeEvent(QCloseEvent* event) override;
@@ -29,7 +30,6 @@ private slots:
     void on_actionLoad_DMP_triggered();
 
 private:
-    void loadFile(const QString & path);
     void setupNavigation();
     void setupWidgets();
     void setupToolSync();

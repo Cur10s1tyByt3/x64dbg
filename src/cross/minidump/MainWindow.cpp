@@ -15,13 +15,6 @@ MainWindow::MainWindow(QWidget* parent)
     setupNavigation();
     setupWidgets();
     setupToolSync();
-
-    // Load the dump provided on the command line
-    auto args = qApp->arguments();
-    if(args.length() > 1)
-    {
-        loadFile(args.at(1));
-    }
 }
 
 MainWindow::~MainWindow()
