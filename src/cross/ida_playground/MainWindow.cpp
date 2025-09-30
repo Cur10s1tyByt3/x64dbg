@@ -10,7 +10,6 @@
 #include <QCheckBox>
 #include <QSpacerItem>
 #include <QTimer>
-#include <cinttypes>
 
 // HACK: IDA defines these Qt functions in their headers, so we rename them to avoid conflicts
 #define qalloc ida_qalloc
@@ -26,6 +25,8 @@
 
 #include "idalib.hpp"
 
+extern "C" bool idalib_resolve();
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -35,14 +36,25 @@ MainWindow::MainWindow(QWidget* parent)
     setupNavigation();
     setupWidgets();
 
+    // TODO: allow interactively selecting IDA installation folder
+    idalib_resolve();
+
     // Initialize idalib
+    qDebug() << "before init_library()";
     auto status = init_library();
+    qDebug() << "after init_library()";
+
     if(status != 0)
     {
         QMessageBox::critical(this, tr("Error"), tr("Failed to initialize idalib: %1").arg(status));
         QApplication::quit();
         return;
     }
+
+    enable_console_messages(true);
+    int major = 0, minor = 0, build = 0;
+    get_library_version(major, minor, build);
+    qDebug() << "idalib:" << major << minor << build;
 }
 
 MainWindow::~MainWindow()
