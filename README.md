@@ -19,7 +19,7 @@ An open-source binary debugger for Windows, aimed at malware analysis and revers
 
 ## Installation & Usage
 
-1. Download a snapshot from [GitHub](https://github.com/x64dbg/x64dbg/releases), [SourceForge](https://sourceforge.net/projects/x64dbg/files/snapshots) or [OSDN](https://osdn.net/projects/x64dbg) and extract it in a location your user has write access to.
+1. Download a snapshot from [GitHub](https://github.com/x64dbg/x64dbg/releases) or [SourceForge](https://sourceforge.net/projects/x64dbg/files/snapshots) and extract it in a location your user has write access to.
 2. _Optionally_ use `x96dbg.exe` to register a shell extension and add shortcuts to your desktop.
 3. You can now run `x32\x32dbg.exe` if you want to debug a 32-bit executable or `x64\x64dbg.exe` to debug a 64-bit executable! If you are unsure you can always run `x96dbg.exe` and choose your architecture there.
 
@@ -27,11 +27,19 @@ You can also [compile](https://github.com/x64dbg/x64dbg/wiki/Compiling-the-whole
 
 ## Sponsors
 
-[![](.github/sponsors/malcore.png)](https://sponsors.x64dbg.com/malcore)
+<div align="center" markdown="1">
+
+  <a href="https://sponsors.x64dbg.com/warp" target="_blank">
+    <img alt="Warp sponsorship" width="400" src="https://raw.githubusercontent.com/warpdotdev/brand-assets/main/Github/Sponsor/Warp-Github-LG-02.png">
+  </a>
+
+  [**Warp, built for coding with multiple AI agents**](https://sponsors.x64dbg.com/warp)
 
 <br>
 
 [![](.github/sponsors/telekom.svg)](https://sponsors.x64dbg.com/telekom)
+
+</div>
 
 ## Contributing
 
@@ -93,3 +101,4 @@ You can find an exhaustive list of GitHub contributors [here](https://github.com
 - [JustMagic](https://github.com/JustasMasiulis)
 
 Without the help of many people and other open-source projects, it would not have been possible to make x64dbg what it is today, thank you!
+
